@@ -2,16 +2,24 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
+<<<<<<< HEAD
 import pandas as pd
 
+=======
+>>>>>>> 3d86447e87fe26913b3687fe357dedea3c1018b0
 YOUTUBE_TRENDING_URL = 'https://www.youtube.com/feed/trending/'
 
 def get_driver():
   chrome_options = Options()
   chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument('--disable-dev-shm-usage')
+<<<<<<< HEAD
   chrome_options.add_argument('--headless')
   driver = webdriver.Chrome('C:/Users/LENOVO/.wdm/drivers/chromedriver/win32/102.0.5005.61/chromedriver.exe',options=chrome_options)
+=======
+  #chrome_options.add_argument('--headless')
+  driver = webdriver.Chrome(options=chrome_options)
+>>>>>>> 3d86447e87fe26913b3687fe357dedea3c1018b0
   return driver
 
 def get_video_divs(driver):
@@ -22,6 +30,7 @@ def get_video_divs(driver):
   return video_divs
 
 
+<<<<<<< HEAD
 def store_video_information(videos):
 #title,url,thumbnailurl,views,uploaded,desc,channel.
   title = [video.find_element(by=By.ID,value='video-title').text.strip() for video in videos]
@@ -33,9 +42,18 @@ def store_video_information(videos):
 
   df = pd.DataFrame({'Video_title':title,'Video_url':url,'Thumbnail_url':thumbnail_url,'Channel_name':channel_name,'Views':views,'Description':description})
   df.to_csv('youtube-trending.csv',index=False)
+=======
+>>>>>>> 3d86447e87fe26913b3687fe357dedea3c1018b0
 
 if __name__ == '__main__':
   driver = get_driver()
   videos = get_video_divs(driver)
+<<<<<<< HEAD
   store_video_information(videos)
   
+=======
+  #title,url,thumbnailurl,views,uploaded,desc.
+  
+  title = [video.find_element(by=By.ID,value='video-title').text for video in videos]
+  print(title)
+>>>>>>> 3d86447e87fe26913b3687fe357dedea3c1018b0
